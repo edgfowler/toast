@@ -79,6 +79,19 @@ class MyHomePage extends StatelessWidget {
                 );
               },
             ),
+            OutlinedButton(
+              child: const Text('Long Toast'),
+              onPressed: () {
+                Toast.show(
+                  Toast(
+                    context: context,
+                    message:
+                        'High Toast with extra long text message to wrap the widget',
+                    gravity: Toast.TOP,
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

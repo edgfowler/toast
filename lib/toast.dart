@@ -67,7 +67,7 @@ class _Toaster {
 
     switch (toast.gravity) {
       case Toast.TOP:
-        upperG = 50;
+        upperG = 100;
         break;
       case Toast.BOTTOM:
         lowerG = 50;
@@ -101,7 +101,9 @@ class _Toaster {
         padding: const EdgeInsets.all(32),
         alignment: Alignment.center,
         child: Container(
+          // width: MediaQuery.of(toast.context).size.width,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(toast.backRadius),
             color: toast.backColor,
@@ -110,12 +112,22 @@ class _Toaster {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (toast.icon != null) ...[
+                // With Icon.
                 toast.icon!, // Checked for null, so ! is OK.
                 const SizedBox(width: 7, height: 25),
-                Text(toast.message),
+                Flexible(
+                  child: Text(
+                    toast.message,
+                  ),
+                ),
               ] else ...[
+                // Without Icon.
                 const SizedBox(width: 1, height: 25),
-                Text(toast.message),
+                Flexible(
+                  child: Text(
+                    toast.message,
+                  ),
+                ),
                 const SizedBox(width: 1, height: 25),
               ]
             ],
